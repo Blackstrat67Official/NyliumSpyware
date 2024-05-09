@@ -1,0 +1,148 @@
+# Documentazione del Modulo Main di Nylium
+
+## Descrizione
+Questo modulo implementa la funzionalità principale del sistema Nylium. Raccoglie informazioni sul dispositivo, sulla rete e sulla posizione e le scrive in file di testo separati in una cartella specificata.
+
+## Funzionamento
+Il modulo `main.py` si occupa di avviare il sistema Nylium e gestire il processo di raccolta delle informazioni. Inizializza un'istanza della classe Nylium con il nome della cartella in cui si desidera archiviare i file di output. Dopodiché, utilizza i metodi della classe Nylium per raccogliere le informazioni necessarie e scriverle nei file di testo corrispondenti.
+
+## Classe
+- **Nylium:** Rappresenta il sistema Nylium e gestisce la raccolta e la scrittura delle informazioni.
+
+## Metodi
+1. **\_\_init\_\_(self, folder_name):**
+   - Descrizione: Inizializza un'istanza della classe Nylium con il nome della cartella di output.
+   - Parametri:
+     - folder_name: Stringa contenente il nome della cartella di output.
+   - Funzionamento: Crea la cartella di output se non esiste già e inizializza le variabili per le informazioni sul dispositivo, sulla batteria, sull'hardware, sui dischi esterni, sui pacchetti installati, sulla posizione, sulle interfacce di rete, sulla connettività di rete, sulle connessioni di rete, sui protocolli di rete e sul traffico di rete.
+
+2. **Print(self):**
+   - Descrizione: Stampa il logo di Nylium e le informazioni generali del sistema.
+   - Funzionamento: Stampa il logo e le informazioni di intestazione del sistema Nylium.
+
+3. **WriteIntoFiles(self):**
+   - Descrizione: Scrive le informazioni raccolte nei file di testo corrispondenti nella cartella di output.
+   - Funzionamento: Utilizza i dati raccolti durante l'inizializzazione per scrivere le informazioni nei file di testo separati.
+
+## Utilizzo
+Per utilizzare il modulo `main.py`, è necessario importare la classe Nylium e creare un'istanza della stessa fornendo il nome della cartella di output. Successivamente, è possibile chiamare i metodi della classe Nylium per eseguire la raccolta delle informazioni e la scrittura dei file di output.
+
+## Dipendenze
+- **nylium.device:** Modulo per la raccolta delle informazioni sul dispositivo.
+- **nylium.network:** Modulo per la raccolta delle informazioni di rete.
+- **nylium.position:** Modulo per la raccolta delle informazioni sulla posizione.
+- **os:** Modulo per interagire con il sistema operativo.
+
+
+
+# Documentazione del Modulo Device di Nylium
+
+## Descrizione
+Questo modulo fornisce funzioni per raccogliere informazioni sul dispositivo, come il sistema operativo, la batteria, l'hardware, i dischi esterni e i pacchetti installati.
+
+## Funzionamento
+Il modulo `device.py` utilizza diverse librerie come `platform`, `psutil`, e `subprocess` per ottenere informazioni dettagliate sul dispositivo e sui componenti hardware.
+
+## Funzioni
+
+1. **GetGeneralInfo():**
+   - Descrizione: Restituisce un dizionario contenente informazioni generali sul sistema, come il sistema operativo, la versione e l'architettura.
+   - Parametri: Nessuno
+   - Restituisce: Dizionario contenente le informazioni generali.
+
+2. **GetBatteryInfo():**
+   - Descrizione: Restituisce un dizionario contenente informazioni sulla batteria, come la percentuale di carica e se è collegata all'alimentazione.
+   - Parametri: Nessuno
+   - Restituisce: Dizionario contenente le informazioni sulla batteria.
+
+3. **GetHardwareInfo():**
+   - Descrizione: Restituisce un dizionario contenente informazioni sull'hardware del dispositivo, come le informazioni sulla CPU, sulla GPU e sulla memoria.
+   - Parametri: Nessuno
+   - Restituisce: Dizionario contenente le informazioni sull'hardware.
+
+4. **GetExternalDisksInfo():**
+   - Descrizione: Restituisce una lista di dizionari contenenti informazioni sui dischi esterni o rimovibili collegati al dispositivo.
+   - Parametri: Nessuno
+   - Restituisce: Lista di dizionari contenenti le informazioni sui dischi esterni.
+
+5. **GetInstalledPackages():**
+   - Descrizione: Restituisce una stringa contenente l'elenco dei pacchetti installati nel sistema.
+   - Parametri: Nessuno
+   - Restituisce: Stringa contenente l'elenco dei pacchetti installati.
+
+## Utilizzo
+Per utilizzare il modulo `device.py`, è sufficiente importare le funzioni necessarie nel proprio script e chiamarle quando necessario per ottenere le informazioni desiderate sul dispositivo.
+
+## Dipendenze
+- `platform`: Libreria Python per accedere alle informazioni sulla piattaforma di sistema.
+- `psutil`: Libreria Python per accedere alle informazioni sul sistema e sui processi in esecuzione.
+- `subprocess`: Libreria Python per eseguire comandi del sistema operativo da Python.
+
+
+
+# Documentazione del Modulo Network di Nylium
+
+## Descrizione
+Questo modulo fornisce funzioni per raccogliere informazioni sulla rete, come le interfacce di rete, la connettività, le connessioni di rete, i protocolli e il traffico di rete.
+
+## Funzionamento
+Il modulo `network.py` utilizza diverse librerie come `psutil`, `netifaces` e `socket` per ottenere informazioni dettagliate sulla rete e le connessioni di rete.
+
+## Funzioni
+
+1. **GetNetworkInterfacesInfo():**
+   - Descrizione: Restituisce un dizionario contenente informazioni dettagliate sulle interfacce di rete del dispositivo.
+   - Parametri: Nessuno
+   - Restituisce: Dizionario contenente le informazioni sulle interfacce di rete.
+
+2. **GetNetworkConnectivityInfo():**
+   - Descrizione: Restituisce un dizionario contenente informazioni sulla connettività di rete del dispositivo, come lo stato di connessione e la velocità.
+   - Parametri: Nessuno
+   - Restituisce: Dizionario contenente le informazioni sulla connettività di rete.
+
+3. **get_network_connections_info():**
+   - Descrizione: Restituisce una lista di dizionari contenenti informazioni sulle connessioni di rete attive del dispositivo.
+   - Parametri: Nessuno
+   - Restituisce: Lista di dizionari contenenti le informazioni sulle connessioni di rete.
+
+4. **get_network_protocol_info(protocol):**
+   - Descrizione: Restituisce un dizionario contenente informazioni sul protocollo di rete specificato.
+   - Parametri:
+     - protocol: Stringa contenente il nome del protocollo di rete (es. 'tcp', 'udp').
+   - Restituisce: Dizionario contenente le informazioni sul protocollo di rete.
+
+5. **get_network_traffic_info():**
+   - Descrizione: Restituisce un dizionario contenente informazioni sul traffico di rete, come byte inviati e ricevuti, e pacchetti inviati e ricevuti.
+   - Parametri: Nessuno
+   - Restituisce: Dizionario contenente le informazioni sul traffico di rete.
+
+## Utilizzo
+Per utilizzare il modulo `network.py`, è sufficiente importare le funzioni necessarie nel proprio script e chiamarle quando necessario per ottenere le informazioni desiderate sulla rete e le connessioni di rete.
+
+## Dipendenze
+- `psutil`: Libreria Python per accedere alle informazioni sul sistema e sui processi in esecuzione.
+- `netifaces`: Libreria Python per accedere alle informazioni sulle interfacce di rete.
+- `socket`: Libreria Python per la comunicazione di rete a basso livello.
+
+
+
+# Documentazione del Modulo Position di Nylium
+
+## Descrizione
+Questo modulo fornisce una funzione per ottenere informazioni sulla posizione geografica del dispositivo utilizzando il servizio di geocodifica.
+
+## Funzionamento
+Il modulo `position.py` utilizza la libreria `geocoder` per ottenere le informazioni sulla posizione geografica del dispositivo utilizzando l'indirizzo IP del dispositivo.
+
+## Funzione
+
+1. **GetLocationInfo():**
+   - Descrizione: Restituisce un dizionario contenente informazioni sulla posizione geografica del dispositivo.
+   - Parametri: Nessuno
+   - Restituisce: Dizionario contenente le informazioni sulla posizione.
+
+## Utilizzo
+Per utilizzare il modulo `position.py`, è sufficiente importare la funzione `GetLocationInfo()` nel proprio script e chiamarla per ottenere le informazioni sulla posizione geografica del dispositivo.
+
+## Dipendenze
+- `geocoder`: Libreria Python per l'accesso a servizi di geocodifica e decodifica.
